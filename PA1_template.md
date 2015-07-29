@@ -15,26 +15,6 @@ Data<-read.csv("activity.csv",header=TRUE,na.strings = "NA",sep=",");
 
 ```r
 library(dplyr);
-```
-
-```
-## Warning: package 'dplyr' was built under R version 3.2.1
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## 
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 #Numero di steps per ogni giorno
 by_date<-group_by(Data,date);
 NDays<-summarize(by_date,sum(steps));
@@ -71,12 +51,14 @@ plot(Av_steps$interval,Av_steps$mean,type="l",xlab="Interval",ylab="#Steps")
 The 5-min interval that contains,on average, the maximum number of steps is:
 
 ```r
-which(Av_steps[,2]==max(Av_steps[,2]))
+MaxInterv<-which(Av_steps[,2]==max(Av_steps[,2]))
+Av_steps$interval[MaxInterv]
 ```
 
 ```
-## [1] 104
+## [1] 835
 ```
+With a value of 104 steps
 
 ##Imputing missing values
 The total number of missing values in the dataset is

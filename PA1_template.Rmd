@@ -42,8 +42,10 @@ plot(Av_steps$interval,Av_steps$mean,type="l",xlab="Interval",ylab="#Steps")
 ```
 The 5-min interval that contains,on average, the maximum number of steps is:
 ```{r,cache=TRUE}
-which(Av_steps[,2]==max(Av_steps[,2]))
+MaxInterv<-which(Av_steps[,2]==max(Av_steps[,2]))
+Av_steps$interval[MaxInterv]
 ```
+With a value of `r MaxInterv` steps
 
 ##Imputing missing values
 The total number of missing values in the dataset is
